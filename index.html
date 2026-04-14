@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultra Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: black;
+      color: white;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    /* LIGHT MODE */
+    .light {
+      background: white;
+      color: black;
+    }
+
+    header {
+      padding: 50px;
+    }
+
+    h1 {
+      color: cyan;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .toggle {
+      background: cyan;
+    }
+
+    /* PARTICLES */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      padding: 20px;
+      border: 1px solid cyan;
+      border-radius: 10px;
+    }
+
+    /* GAME */
+    #gameBtn {
+      font-size: 20px;
+      background: orange;
+    }
+
+    /* CHAT */
+    .chat {
+      max-width: 300px;
+      margin: 20px auto;
+      border: 1px solid gray;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 70%;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <h1>🔥 Ultra Website</h1>
+  <p>Now this is PRO level 😎</p>
+
+  <button class="toggle" onclick="toggleMode()">🌙 Toggle Mode</button>
+</header>
+
+<section class="grid">
+  <div class="card">⚡ Fast</div>
+  <div class="card">🎨 Cool</div>
+  <div class="card">🚀 Powerful</div>
+</section>
+
+<!-- GAME -->
+<h2>🎮 Mini Game</h2>
+<p>Score: <span id="score">0</span></p>
+<button id="gameBtn" onclick="addScore()">Click Me!</button>
+
+<!-- CHAT -->
+<h2>💬 Chat Box</h2>
+<div class="chat">
+  <div id="messages"></div>
+  <input id="msg" placeholder="Type message">
+  <button onclick="sendMsg()">Send</button>
+</div>
+
+<script>
+  // DARK MODE
+  function toggleMode() {
+    document.body.classList.toggle("light");
+  }
+
+  // GAME
+  let score = 0;
+  function addScore() {
+    score++;
+    document.getElementById("score").innerText = score;
+  }
+
+  // CHAT
+  function sendMsg() {
+    let msg = document.getElementById("msg").value;
+    if(msg !== "") {
+      let div = document.createElement("div");
+      div.innerText = msg;
+      document.getElementById("messages").appendChild(div);
+      document.getElementById("msg").value = "";
+    }
+  }
+
+  // PARTICLES
+  const canvas = document.getElementById("bg");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+  for(let i=0;i<50;i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*3
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "cyan";
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+      p.y += 0.5;
+      if(p.y > canvas.height) p.y = 0;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+
+</body>
+  </html>
