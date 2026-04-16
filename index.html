@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultra Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #000);
+      background-size: 400% 400%;
+      animation: bg 10s ease infinite;
+      color: white;
+      text-align: center;
+    }
+
+    @keyframes bg {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 40px;
+    }
+
+    p {
+      color: #ccc;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 25px;
+      background: cyan;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px cyan;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+      width: 250px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px cyan;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>⚡ Ultra Website ⚡</h1>
+<p>Modern design. Smooth animations. Built by you 😎</p>
+
+<a href="https://discord.gg/YOURCODE" class="btn">Join Discord 🚀</a>
+<a href="#" class="btn">Explore</a>
+
+<div class="container">
+  <div class="card">
+    <h2>🔥 Fast</h2>
+    <p>Optimized and smooth experience</p>
+  </div>
+
+  <div class="card">
+    <h2>🎨 Stylish</h2>
+    <p>Modern glass UI design</p>
+  </div>
+
+  <div class="card">
+    <h2>🤖 Smart</h2>
+    <p>Connect with your bot easily</p>
+  </div>
+</div>
+
+<footer>
+  © 2026 Your Name
+</footer>
+
+</body>
+</html>
