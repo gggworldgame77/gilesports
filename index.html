@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ultra Bot Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: black;
+      color: white;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    .light {
+      background: white;
+      color: black;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    h1 {
+      margin-top: 40px;
+      color: cyan;
+      text-shadow: 0 0 20px cyan;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      margin: 10px;
+      border: 2px solid cyan;
+      border-radius: 25px;
+      background: transparent;
+      color: cyan;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: cyan;
+      color: black;
+      box-shadow: 0 0 20px cyan;
+    }
+
+    .box {
+      border: 1px solid cyan;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+    }
+
+    .chat {
+      max-width: 300px;
+      margin: auto;
+      border: 1px solid gray;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<h1>⚡ ULTRA BOT WEBSITE ⚡</h1>
+
+<!-- BUTTONS -->
+<a href="https://discord.gg/Dj5jDEUgk">
+  <button class="btn">Join Server 🚀</button>
+</a>
+<!-- STATUS -->
+<div class="box">
+  <h2>Status</h2>
+  <p id="status">Online Server</p>
+</div>
+
+<!-- GAME -->
+<div class="box">
+  <h2>🎮 Mini Game</h2>
+  <p>Score: <span id="score">0</span></p>
+  <button class="btn" onclick="addScore()">Click Me</button>
+</div>
+
+<!-- CHAT -->
+<div class="box">
+  <h2>💬 Chat</h2>
+  <div class="chat" id="chat"></div>
+  <input id="msg" placeholder="Type message">
+  <button onclick="sendMsg()">Send</button>
+</div>
+
+<script>
+const API = "https://YOUR-BOT-URL"; // 🔥 CHANGE THIS
+
+// BOT FUNCTIONS
+function play() {
+  let song = document.getElementById("song").value;
+
+  fetch(API + "/play", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({song})
+  });
+}
+
+function skip() {
+  fetch(API + "/skip", { method: "POST" });
+}
+
+function updateStatus() {
+  fetch(API + "/status")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("status").innerText =
+        "Online: " + data.online + " | Song: " + data.song;
+    });
+}
+
+setInterval(updateStatus, 3000);
+updateStatus();
+
+// DARK MODE
+function toggleMode() {
+  document.body.classList.toggle("light");
+}
+
+// GAME
+let score = 0;
+function addScore() {
+  score++;
+  document.getElementById("score").innerText = score;
+}
+
+// CHAT
+function sendMsg() {
+  let msg = document.getElementById("msg").value;
+  if (msg !== "") {
+    let div = document.createElement("div");
+    div.innerText = msg;
+    document.getElementById("chat").appendChild(div);
+    document.getElementById("msg").value = "";
+  }
+}
+
+// PARTICLES
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2
