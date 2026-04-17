@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rainbow Clan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      color: white;
+      text-align: center;
+      background: black;
+      overflow-x: hidden;
+    }
+
+    /* RAINBOW BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet);
+      background-size: 1000% 1000%;
+      animation: rainbow 10s linear infinite;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    @keyframes rainbow {
+      0% {background-position: 0%}
+      100% {background-position: 100%}
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 40px;
+      text-shadow: 0 0 20px cyan;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(45deg, cyan, pink);
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px white;
+    }
+
+    .section {
+      margin: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .card {
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid cyan;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🌈 RAINBOW CLAN 🎮</h1>
+<p>Join the ultimate gaming competition team</p>
+
+<a href="https://discord.gg/YOURCODE">
+  <button class="btn">Join Discord 🚀</button>
+</a>
+
+<div class="section">
+  <h2>🏆 Competitions</h2>
+  <div class="card">🔥 Weekly Tournaments</div>
+  <div class="card">💰 Prize Matches</div>
+  <div class="card">🎮 Clan Battles</div>
+</div>
+
+<div class="section">
+  <h2>👥 Team Members</h2>
+  <div class="card">Admin:MAXBOYRBLX</div>
+  <div class="card">Owner:GGGWORLDGAME</div>
+  <div class="card">Staff:RD127712</div>
+</div>
+
+<div class="section">
+  <h2>📩 Apply Now</h2>
+  <input id="name" placeholder="Your Name"><br><br>
+  <input id="email" placeholder="Your Email"><br><br>
+  <button class="btn" onclick="apply()">Apply</button>
+</div>
+
+<script>
+function apply() {
+  let name = document.getElementById("name").value;
+
+  if (name === "") {
+    alert("Enter your name!");
+  } else {
+    alert("Welcome " + name + " 🔥 We will contact you in Gmail!");
+  }
+}
+</script
+</body>
+</html>
